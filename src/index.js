@@ -3,27 +3,27 @@ const cards = document.querySelector('.card');
 var request = new XMLHttpRequest();
 request.open('GET', 'https://randomuser.me/api/?seed=javascript&results=10&nat=BR&noinfo', true);
 
+let data = null;
 
 request.onload = function() {
-
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response);
-  
-  console.log(data);
-  
-    if (request.status >= 200 && request.status < 400) {
-        data.results.forEach(x => {
-            buildCard(x.gender, x.name);
-        });
-    }else {
-        const errorMessage = document.createElement('marquee');
-        errorMessage.textContent = `Gah, it's not working!`;
-        app.appendChild(errorMessage);
-    }
+    data = JSON.parse(this.response);
+    console.log(data);
 }
 
+var filtro = document.getElementById('filtro-pesquisa');
 
-const buildCard = (gender, name) => {
+filtro.onkeyup = function() {
+    var nomeFiltro = filtro.value;
+    document.getElementById('itemContainer').innerHTML = "";
+
+    data.results.forEach(x => {      
+        if((x.name.first.toLowerCase().indexOf(nomeFiltro) >= 0) || (x.name.last.toLowerCase().indexOf(nomeFiltro) >= 0)){
+            buildCard(x.name, x.gender, x.picture, x.registered);
+        }
+    });
+};
+
+const buildCard = (name, gender, picture, registered) => {
     const html = `
 
         <strong>${name.title} ${name.first} ${name.last}</strong>
