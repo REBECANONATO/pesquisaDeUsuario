@@ -2,6 +2,11 @@
     background-color: #3a3f46;
     color: white;
     text-align: left;
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    width: 100%;
 }
 
 #myFooter .row {
@@ -11,19 +16,6 @@
 #myFooter .info{
     text-align: justify; 
     color: #afb0b1;
-}
-
-#myFooter ul {
-    list-style-type: none;
-    padding-left: 0;
-    line-height: 1.7;
-}
-
-#myFooter h5 {
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-    margin-top: 30px;
 }
 
 #myFooter .logo{

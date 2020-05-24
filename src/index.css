@@ -13,10 +13,72 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
-.content{
+.contentMenu{
     flex: 1 0 auto;
     -webkit-flex: 1 0 auto;
-    min-height: 550px;
+    min-height: 30px;
+}
+
+.contentMenu .input-group {
+    display: flex;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 1320px;
+    height: 100%;
+    margin: 0 auto;
+    display: flow-root;
+    align-items: center;
+    justify-content: center;
+}
+  
+.register-container .content {
+    width: 100%;
+    padding: 15px;
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.register-container .content section {
+    width: 100%;
+    max-width: 1380px;
+    padding-left: 20px;
+    align-self: baseline;
+}
+
+.register-container .content section h1 {
+    margin: 14px 0 32px;
+    font-size: 32px;
+}
+
+.register-container .content section h2 {
+    margin: 14px 0 32px;
+    font-size: 24px;
+}
+  
+.register-container .content section p {
+    font-size: 18px;
+    color: #737380;
+    line-height: 32px;
+}
+
+.register-container .content form {
+    width: 100%;
+    max-width: 450px;
+}
+  
+.register-container .content form input {
+    margin-top: 8px;
+}
+  
+.register-container .content form .input-group {
+    display: flex;
 }
 
 .profile-container {
@@ -38,19 +100,12 @@ body{
     padding: 0;
     border-radius: 8px;
     position: relative;
+    display: flex;
 }
 
-.profile-container ul li strong {
-    display: block;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    color: #41414d;
+.profile-container ul li .texts {
     margin-left: 15px;
-}
-
-.profile-container ul li p + strong {
-    margin-top: 5px;
-    margin-left: 15px;
+    margin-top: 15px;
 }
   
 .profile-container ul li p {
@@ -58,12 +113,16 @@ body{
   line-height: 21px;
   font-size: 16px;
   text-transform: capitalize;
-  margin-left: 15px;
-}
+  margin: 0 !important;
+} 
 
 .profile-container ul li img {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    width: 100%; 
-    height: 240px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

@@ -16,26 +16,34 @@
         <script defer src="./src/index.js"></script>
     </head>
     <body>
-        <div class="content">
+        <div class="contentMenu">
             <nav class="navbar">
                 <img src="img/pre_requisitos.png" alt="imagem" class="navbar__logo" />
                 <img src="img/igti-logo-green.png" alt="imagem" class="navbar__logo" />
                 <img src="img/parceirosAtivo.png" alt="imagem" class="navbar__logo" />
 
                 <ul class="navbar__menu">
-                  <input id="filtro-pesquisa"/>
-                  <li class="button--sign-up">Pesquisar</li>
+                  <input id="filtro-pesquisa" class="button--sign-up" placeholder="Pesquisar"/>
+                  
                 </ul>
-              </nav>
-
-            <section class="profile-container">
-                <ul class="card" id="itemContainer">
-
-                </ul>
-            </section>
-
-            
+            </nav>
         </div>
+
+        <div class="register-container">
+            <div class="content">
+                <section>
+                    <h1> Estatísticas </h1>
+                    <h2>Dados: <span id="dados"></span></h2>
+                    <div id="dadosEstatisticas"></div>
+                </section>
+                <section class="profile-container">
+                    <ul class="card" id="itemContainer">
+                        <!-- JavaScript -->
+                    </ul>
+                </section>
+            </div>
+        </div>
+
         <footer id="myFooter">
             <div class="second-bar">
                 <div class="container">
