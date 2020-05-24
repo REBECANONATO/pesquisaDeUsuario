@@ -22,6 +22,7 @@ filtro.onkeyup = function() {
     
         var nomeFiltro = filtro.value.toLowerCase().trim();
         var str = nomeFiltro.replace(/\s/g, '');
+
         document.getElementById('itemContainer').innerHTML = "";
         countUsuario = 0;
         mediaIdade = 0;
@@ -31,12 +32,21 @@ filtro.onkeyup = function() {
 
         data.results.forEach(x => {
             var names = x.name.first + x.name.last;
-            if(names.toLowerCase().indexOf(str) >= 0){
+            var namesSemEspaco = names.replace(/\s/g, '');
+            if(namesSemEspaco.toLowerCase().indexOf(str) >= 0 && str != ""){
                 countUsuario ++;
                 buildCard(x.name, x.gender, x.picture, x.registered);
                 calculosEstatisticas(x.gender, x.registered, countUsuario);
             }
         });
+
+        if(str == ""){
+            document.getElementById('dados').innerHTML = "Nenhum usuário filtrado! ";
+            document.getElementById('itemContainer').innerHTML = "";
+            document.getElementById('dadosEstatisticas').innerHTML = "";
+            return;
+        };
+        
         document.getElementById('dados').innerHTML = countUsuario + " usuário(s) encontrado(s)";
         buildCardEstatisticas();
 };
