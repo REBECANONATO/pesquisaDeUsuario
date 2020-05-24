@@ -20,7 +20,8 @@ document.getElementById('dados').innerHTML = "Nenhum usuário filtrado! ";
 
 filtro.onkeyup = function() {
     
-        var nomeFiltro = filtro.value.toLowerCase();
+        var nomeFiltro = filtro.value.toLowerCase().trim();
+        var str = nomeFiltro.replace(/\s/g, '');
         document.getElementById('itemContainer').innerHTML = "";
         countUsuario = 0;
         mediaIdade = 0;
@@ -28,8 +29,9 @@ filtro.onkeyup = function() {
         countSexoMale = 0;
         countSexoFemale = 0;
 
-        data.results.forEach(x => {     
-            if((x.name.first.toLowerCase().indexOf(nomeFiltro) >= 0) || (x.name.last.toLowerCase().indexOf(nomeFiltro) >= 0)){
+        data.results.forEach(x => {
+            var names = x.name.first + x.name.last;
+            if(names.toLowerCase().indexOf(str) >= 0){
                 countUsuario ++;
                 buildCard(x.name, x.gender, x.picture, x.registered);
                 calculosEstatisticas(x.gender, x.registered, countUsuario);
@@ -45,8 +47,8 @@ const buildCard = (name, gender, picture, registered) => {
         <img src="${picture.thumbnail}" class="card-img-top br0" alt="...">
         <div class="texts">
             <strong>${name.title} ${name.first} ${name.last}</strong>
-            <p>idade: ${registered.age}</p>
-            <strong>sexo: ${gender}</strong>
+            <p>Idade: ${registered.age}</p>
+            <strong>Sexo: ${gender}</strong>
         </div>
 
     `;
