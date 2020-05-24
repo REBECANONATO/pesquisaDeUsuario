@@ -11,9 +11,11 @@ let sumIdade = 0;
 let mediaIdade = 0;
 
 request.onload = function() {
+    // pega os dados da API
     data = JSON.parse(this.response);
-}
+} 
 
+// pega os dados digitados no campo input (pesquisa)
 var filtro = document.getElementById('filtro-pesquisa');
 
 document.getElementById('dados').innerHTML = "Nenhum usuário filtrado! ";
@@ -21,7 +23,7 @@ document.getElementById('dados').innerHTML = "Nenhum usuário filtrado! ";
 filtro.onkeyup = function() {
     
         var nomeFiltro = filtro.value.toLowerCase().trim();
-        var str = nomeFiltro.replace(/\s/g, '');
+        //var str = nomeFiltro.replace(/\s/g, ''); //função para tirar todos os espaços
 
         document.getElementById('itemContainer').innerHTML = "";
         countUsuario = 0;
@@ -31,9 +33,9 @@ filtro.onkeyup = function() {
         countSexoFemale = 0;
 
         data.results.forEach(x => {
-            var names = x.name.first + x.name.last;
-            var namesSemEspaco = names.replace(/\s/g, '');
-            if(namesSemEspaco.toLowerCase().indexOf(str) >= 0 && str != ""){
+            var names = x.name.first + " " + x.name.last;
+            //var namesSemEspaco = names.replace(/\s/g, ''); //função para tirar todos os espaços
+            if(names.toLowerCase().indexOf(str) >= 0 && nomeFiltro != ""){
                 countUsuario ++;
                 buildCard(x.name, x.gender, x.picture, x.registered);
                 calculosEstatisticas(x.gender, x.registered, countUsuario);
