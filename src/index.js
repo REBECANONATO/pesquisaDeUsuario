@@ -35,10 +35,10 @@ filtro.onkeyup = function() {
         data.results.forEach(x => {
             var names = x.name.first + " " + x.name.last;
             //var namesSemEspaco = names.replace(/\s/g, ''); //função para tirar todos os espaços
-            if(names.toLowerCase().indexOf(nomeFiltro) >= 0 && nomeFiltro != ""){
+            if(names.toLowerCase().indexOf(nomeFiltro) >= 0 && nomeFiltro != ""){ 
                 countUsuario ++;
-                buildCard(x.name, x.gender, x.picture, x.registered);
-                calculosEstatisticas(x.gender, x.registered, countUsuario);
+                buildCard(x.name, x.gender, x.picture, x.dob);
+                calculosEstatisticas(x.gender, x.dob, countUsuario);
             }
         });
 
@@ -53,13 +53,13 @@ filtro.onkeyup = function() {
         buildCardEstatisticas();
 };
 
-const buildCard = (name, gender, picture, registered) => {
+const buildCard = (name, gender, picture, dob) => {
     const html = `
 
         <img src="${picture.thumbnail}" class="card-img-top br0" alt="...">
         <div class="texts">
             <strong>${name.title} ${name.first} ${name.last}</strong>
-            <p>Idade: ${registered.age}</p>
+            <p>Idade: ${dob.age}</p>
             <strong>Sexo: ${gender}</strong>
         </div>
 
@@ -89,7 +89,7 @@ const buildCardEstatisticas = () => {
     div.innerHTML = html;
 }
 
-const calculosEstatisticas = (gender, registered) => {
+const calculosEstatisticas = (gender, dob) => {
 
     if(gender == "female"){
         countSexoFemale ++;
@@ -97,7 +97,7 @@ const calculosEstatisticas = (gender, registered) => {
         countSexoMale ++;
     };
 
-    sumIdade += registered.age;
+    sumIdade += dob.age;
 }
 
 request.send();
