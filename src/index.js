@@ -35,7 +35,7 @@ filtro.onkeyup = function() {
         data.results.forEach(x => {
             var names = x.name.first + " " + x.name.last;
             //var namesSemEspaco = names.replace(/\s/g, ''); //função para tirar todos os espaços
-            if(names.toLowerCase().indexOf(str) >= 0 && nomeFiltro != ""){
+            if(names.toLowerCase().indexOf(nomeFiltro) >= 0 && nomeFiltro != ""){
                 countUsuario ++;
                 buildCard(x.name, x.gender, x.picture, x.registered);
                 calculosEstatisticas(x.gender, x.registered, countUsuario);
