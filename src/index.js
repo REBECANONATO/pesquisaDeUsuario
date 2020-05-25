@@ -42,7 +42,7 @@ filtro.onkeyup = function() {
             }
         });
 
-        if(str == ""){
+        if(nomeFiltro == ""){
             document.getElementById('dados').innerHTML = "Nenhum usuário filtrado! ";
             document.getElementById('itemContainer').innerHTML = "";
             document.getElementById('dadosEstatisticas').innerHTML = "";
